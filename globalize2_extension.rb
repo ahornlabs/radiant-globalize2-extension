@@ -1,9 +1,10 @@
 # Uncomment this if you reference any of your controllers in activate
 # require_dependency 'application'
 require 'globalize2/form_builder_extensions'
+require 'radiant-snippets-extension'
 
 class Globalize2Extension < Radiant::Extension
-  version "0.2.8"
+  version "0.3.2"
   description "Translate content in Radiant CMS using the Globalize2 Rails plugin."
   url "http://blog.aissac.ro/radiant/globalize2-extension/"
 
@@ -42,6 +43,8 @@ class Globalize2Extension < Radiant::Extension
     
     require 'i18n/backend/fallbacks'
     I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
+
+    SnippetsExtension::activate
 
     admin.page.edit.add :form, 'admin/shared/change_locale', :before => 'edit_page_parts'
     admin.snippet.edit.add :form, 'admin/shared/change_locale', :before => 'edit_content'
