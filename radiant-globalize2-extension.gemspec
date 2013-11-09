@@ -358,5 +358,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<radiant>, [">= 0.9.1"])
   end
+
+  s.add_dependency("http_accept_language")
 end
 
